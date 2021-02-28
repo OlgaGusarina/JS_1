@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 1. Дан код:
+var a = 1, b = 1, c, d;
+c = ++a; alert(c);           // 2 - инкремент прибавляет 1 к а=1
+d = b++; alert(d);           // 1 - инкремент находится после переменной и будет применён позже
+c = (2+ ++a); alert(c);      // 5 - ранее a была увеличена на 1 и сейчас перед действием добавляем 1, 2+3=5
+d = (2+ b++); alert(d);      // 4 - ранее b была увеличена на 1, 2+2=4 
+alert(a);                    // 3 - к переменной а ранее были применены инкременты
+alert(b);                    // 3 - к переменной b ранее были применены инкременты */
+
+        /*
+        2. Чему будет равен x в примере ниже?
+        var a = 2;
+        var x = 1 + (a *= 2);
+        ОТВЕТ: x= 5, тк a *= 2 это a = a * 2
+        */
+
+        /* 3. Объявить две целочисленные переменные a и b и задать им произвольные начальные значения. Затем написать скрипт, который работает по следующему принципу:
+        если a и b положительные, вывести их разность;
+        если а и b отрицательные, вывести их произведение;
+        если а и b разных знаков, вывести их сумму; ноль можно считать положительным числом. */
+
+        var a = Math.floor(Math.random() * 199) - 99;
+        var b = Math.floor(Math.random() * 199) - 99;
+
+        if (a > 0 & b > 0) {
+            console.log(a - b);
+        } else if (a < 0 & b < 0) {
+            console.log(a * b);
+        } else {
+            console.log(a + b);
+        }
+
+        /* 4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15. */
+
+        a = Math.floor(Math.random() * 15);
+
+        switch (a) {
+            case 1: console.log(a);
+                a++;
+            case 2: console.log(a);
+                a++;
+            case 3: console.log(a);
+                a++;
+            case 4: console.log(a);
+                a++;
+            case 5: console.log(a);
+                a++;
+            case 6: console.log(a);
+                a++;
+            case 7: console.log(a);
+                a++;
+            case 8: console.log(a);
+                a++;
+            case 9: console.log(a);
+                a++;
+            case 10: console.log(a);
+                a++;
+            case 11: console.log(a);
+                a++;
+            case 12: console.log(a);
+                a++;
+            case 13: console.log(a);
+                a++;
+            case 14: console.log(a);
+                a++;
+            case 15: console.log(a);
+                a++;
+            default:
+                break;
+
+        }
+
+
+        /* 5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return. */
+
+        function summary(a, b) {   // сложение
+            return a + b;
+        }
+        var c = summary(a, b)
+        console.log(c);
+
+        function subtraction(a, b) { // вычитание
+            return a - b;
+        }
+        var c = subtraction(a, b)
+        console.log(c);
+
+        function multiply(a, b) {  // умножение
+            return a * b;
+        }
+        var c = multiply(a, b)
+        console.log(c);
+
+        function division(a, b) { // деление
+            return a / b;
+        }
+        var c = division(a, b)
+        console.log(c);
+
+
+
+
+        /* 6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов,
+        operation – строка с названием операции.
+        В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 5)
+        и вернуть полученное значение (использовать switch). */
+
+        function mathOperation(arg1, arg2, operation) {
+
+            operation = prompt('Аргументы: ' + a + ' и ' + b + '. Введите название операции! (summary/subtraction/multiply/devision)');
+
+            switch (operation) {
+                case 'summary':
+                    return summary(arg1, arg2);
+
+                case 'subtraction':
+                    return subtraction(arg1, arg2);
+
+                case 'multiply':
+                    return multiply(arg1, arg2);
+
+                case 'division':
+                    return division(arg1, arg2);
+                default:
+                    console.log('Вы ввели неверное название операции!');
+            }
+        }
+        console.log(mathOperation(a, b));
+
+
+
+        /* 7. *Сравнить null и 0. Попробуйте объяснить результат. 
+        
+        null является особым типом данных в js, значение которого лучше всего характеризуется словом "ничего" или "неизвестно".
+
+        null > 0  false
+        null < 0  false
+        При сравнении "</>", в соответствии со спецификацией, null преобразуется в число со значением "+0" и его сравнение с 0 выдает false.
+
+        null == 0  false
+        При сравнении null == 0, действует абстрактный алгоритм сравнения равенств, 
+        в соответствии с которым если null сравнивается с чем бы то ни было (кроме undefined и null), результатом будет false.
+
+        null >= 0  true
+        null <= 0  true
+        При сравнении ">=" и "<=" действует абстрактный алгоритм сравнения отношений, который преобразует null в "+0" и в дальнейшем сравнивает наоборот,
+        т.е. при сравнении null >= 0 сначала он спросит 0 >= +0 ? Если результат равен true или undefined - возвращает false. Иначе возвращает true, как и в нашем случае.
+        */
+
+
+        /* 8. *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень. */
+
+        function power(val, pow) {
+
+            for (let pow = 2; pow <= 10; pow++) {
+                console.log(val + ' в ' + pow + ' степени = ' + val ** pow);
+            }
+        }
+        let val = prompt('Введите число для возведения в степень: ');
+        parseInt(val);
+        power(val);
+
+
+    </script>
+</body>
+
+</html>
