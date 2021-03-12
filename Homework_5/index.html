@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 60px;
+            height: 60px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+         .cart{
+             margin: 20px;
+         }
+        #catalog{
+            margin: 20px;
+        }
+        .item {
+            background: cornsilk;
+            border: 1px solid black;
+            padding: 20px 20px;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            width: 500px;
+        }
+        .item_catalog {
+            background: azure;
+        }
+        .button {
+            margin: 20px 0;
+        }
+        h3 {
+            padding-left: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<table class= "chess_board">
+</table>
+<h3>КОРЗИНА</h3>
+<div class="cart">
+</div>
+<button class="button">
+    ОЧИСТИТЬ КОРЗИНУ
+</button>
+<h3>КАТАЛОГ</h3>
+<div id="catalog"></div>
+<script src="cart_catalog.js"></script>
+<script src="chess.js"></script>
+</body>
+
+</html>
