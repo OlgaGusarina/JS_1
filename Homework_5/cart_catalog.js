@@ -198,31 +198,7 @@ basket.init();
 4.2. При загрузке страницы на базе данного массива генерировать вывод из него.
     HTML-код должен содержать только div id=”catalog” без вложенного кода. Весь вид каталога генерируется JS.*/
 
-const product = {
-    productItems:[
-    {
-        id: 123,
-        name: ['СИГАРЫ AF CHATEAU FUENTE KING T '],
-        price: 2000
-    },
 
-    {
-        id: 124,
-        name: ['СИГАРИЛЛЫ TOSCANO PICCOLO'],
-        price: 800,
-    },
-    {
-        id: 125,
-        name: ['ЗАЖИГАЛКИ ПЬЕЗО'],
-        price: 100
-    },
-    {
-        id: 126,
-        name: ['ГИЛЬОТИНА COLIBRI FIREBIRD'],
-        price: 520
-    }
-    ]
-};
 
 const catalogItem = { //функция, создающая разметку и отображение каталога на странице
     render(item) {
@@ -237,13 +213,39 @@ const catalog = {
     catalogList: null, //весь блок товаров каталога
     catalogItem,//функция, создающая разметку и отображение каталога на странице
 
+    catalogProductList: {
+        catalogProducts:[
+            {
+                id: 123,
+                name: ['СИГАРЫ AF CHATEAU FUENTE KING T '],
+                price: 2000
+            },
+
+            {
+                id: 124,
+                name: ['СИГАРИЛЛЫ TOSCANO PICCOLO'],
+                price: 800,
+            },
+            {
+                id: 125,
+                name: ['ЗАЖИГАЛКИ ПЬЕЗО'],
+                price: 100
+            },
+            {
+                id: 126,
+                name: ['ГИЛЬОТИНА COLIBRI FIREBIRD'],
+                price: 520
+            }
+        ]
+    },
+
     catalogInit() { //находит место для размещения элементов каталога и запускает render
         this.catalogList = document.querySelector('#catalog');
         this.catalogRender();
     },
     catalogRender() { //проверяет содержимое каталога и перебирает его
-        if (product.productItems.length) {
-            product.productItems.forEach(item => {
+        if (this.catalogProductList.catalogProducts.length) {
+            this.catalogProductList.catalogProducts.forEach(item => {
                 this.catalogList.insertAdjacentHTML("beforeend", catalogItem.render(item))})
         }
         else {
